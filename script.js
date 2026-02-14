@@ -1,44 +1,45 @@
-/* ==================== NAVBAR TOGGLE ==================== */
-const menuIcon = document.querySelector('#menu-icon');
-const navbar = document.querySelector('.navbar');
+/*==================== toggle icon navbar ============*/
+let menuIcon = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
 
 if (menuIcon && navbar) {
-  menuIcon.addEventListener('click', () => {
+  menuIcon.onclick = () => {
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-  });
+  };
 }
 
-/* ==================== ACTIVE NAV LINK + STICKY HEADER ==================== */
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('header nav a');
+/*==================== scroll sections active link + sticky header ============*/
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
 
 window.addEventListener('scroll', () => {
-  const top = window.scrollY;
+  let top = window.scrollY;
 
   sections.forEach(sec => {
-    const offset = sec.offsetTop - 150;
-    const height = sec.offsetHeight;
-    const id = sec.getAttribute('id');
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
 
     if (top >= offset && top < offset + height) {
       navLinks.forEach(link => link.classList.remove('active'));
-      const activeLink = document.querySelector(`header nav a[href*="${id}"]`);
-      if (activeLink) activeLink.classList.add('active');
+      const active = document.querySelector(`header nav a[href*="${id}"]`);
+      if (active) active.classList.add('active');
     }
   });
 
-  const header = document.querySelector('.header');
+  /* sticky navbar */
+  let header = document.querySelector('.header');
   if (header) header.classList.toggle('sticky', top > 100);
 
-  // close nav on scroll (mobile)
+  /* close navbar on scroll */
   if (menuIcon) menuIcon.classList.remove('bx-x');
   if (navbar) navbar.classList.remove('active');
 });
 
-/* ==================== THEME TOGGLE ==================== */
-const themeToggle = document.querySelector('.theme-toggle');
-const themeIcon = document.querySelector('.theme-toggle i');
+/*==================== theme toggle ============*/
+let themeIcon = document.querySelector('.theme-toggle i');
+let themeToggle = document.querySelector('.theme-toggle');
 
 function applyTheme(theme) {
   if (!themeIcon) return;
@@ -57,99 +58,113 @@ function applyTheme(theme) {
 if (themeToggle && themeIcon) {
   themeToggle.addEventListener('click', () => {
     const isLight = document.body.classList.toggle('light-mode');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    const theme = isLight ? 'light' : 'dark';
+    localStorage.setItem('theme', theme);
 
-    if (isLight) themeIcon.classList.replace('bx-moon', 'bx-sun');
-    else themeIcon.classList.replace('bx-sun', 'bx-moon');
-  });
-}
-
-/* ==================== TABS (ABOUT SECTION) ==================== */
-function initTabs() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabContents = document.querySelectorAll('.tab-content');
-
-  if (!tabBtns.length || !tabContents.length) return;
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tabId = btn.dataset.tab;
-
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabContents.forEach(c => c.classList.remove('active'));
-
-      btn.classList.add('active');
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-    });
-  });
-
-  // default open first tab
-  tabBtns[0].click();
-}
-
-/* ==================== PORTFOLIO FILTER ==================== */
-function initPortfolioFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-box');
-
-  if (!filterBtns.length || !portfolioItems.length) return;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterValue = btn.dataset.filter; // all, web, data
-
-      portfolioItems.forEach(item => {
-        const category = item.dataset.category;
-
-        if (filterValue === 'all' || category === filterValue) {
-          item.style.display = 'block';
-          requestAnimationFrame(() => {
-            item.style.opacity = '1';
-            item.style.transform = 'scale(1)';
-          });
-        } else {
-          item.style.opacity = '0';
-          item.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            item.style.display = 'none';
-          }, 250);
-        }
-      });
-    });
-  });
-
-  // default click All
-  const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
-  (allBtn || filterBtns[0]).click();
-}
-
-/* ==================== MAKE ENTIRE PROJECT CARD CLICKABLE ==================== */
-function initPortfolioCardClick() {
-  const boxes = document.querySelectorAll('.portfolio-box');
-  if (!boxes.length) return;
-
-  boxes.forEach(box => {
-    const link = box.dataset.link;
-
-    if (link && link !== '#') {
-      box.style.cursor = 'pointer';
-
-      box.addEventListener('click', (e) => {
-        if (e.target.closest('a')) return; // allow icon click
-        window.open(link, '_blank', 'noopener');
-      });
+    if (isLight) {
+      themeIcon.classList.replace('bx-moon', 'bx-sun');
+    } else {
+      themeIcon.classList.replace('bx-sun', 'bx-moon');
     }
   });
 }
 
-/* ==================== SCROLL REVEAL ==================== */
-function initScrollReveal() {
-  if (typeof ScrollReveal === 'undefined') return;
+/*==================== DOMContentLoaded init ============*/
+document.addEventListener('DOMContentLoaded', () => {
+  /* restore theme */
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyTheme(savedTheme);
 
+  /* Init tabs - click first tab automatically */
+  const firstTab = document.querySelector('.tab-btn');
+  if (firstTab) firstTab.click();
+
+  /* Init portfolio filter - click All by default */
+  const allBtn =
+    document.querySelector('.filter-btn[data-filter="all"]') ||
+    document.querySelector('.filter-btn');
+  if (allBtn) allBtn.click();
+
+  /* OPTIONAL: prevent any weird default link color in portfolio overlay */
+  if (!document.getElementById('portfolio-link-style-fix')) {
+    const style = document.createElement('style');
+    style.id = 'portfolio-link-style-fix';
+    style.innerHTML = `
+      .portfolio-layer h4,
+      .portfolio-layer p { color: #fff !important; }
+      .portfolio-layer a { text-decoration: none !important; }
+    `;
+    document.head.appendChild(style);
+  }
+});
+
+/*==================== tab switching ============*/
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabId = btn.dataset.tab;
+
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabContents.forEach(c => c.classList.remove('active'));
+
+    btn.classList.add('active');
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add('active');
+  });
+});
+
+/*==================== portfolio filter (All / Web / Data) ============*/
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-box');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filterValue = btn.dataset.filter; // all, web, data
+
+    portfolioItems.forEach(item => {
+      const category = item.dataset.category;
+
+      if (filterValue === 'all' || category === filterValue) {
+        item.style.display = 'block';
+        setTimeout(() => {
+          item.style.opacity = '1';
+          item.style.transform = 'scale(1)';
+        }, 50);
+      } else {
+        item.style.opacity = '0';
+        item.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, 250);
+      }
+    });
+  });
+});
+
+/*==================== make entire project card clickable ============*/
+document.addEventListener('DOMContentLoaded', () => {
+  const boxes = document.querySelectorAll('.portfolio-box');
+
+  boxes.forEach(box => {
+    const link = box.dataset.link;
+    if (link && link !== '#') {
+      box.style.cursor = 'pointer';
+
+      box.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        window.open(link, '_blank', 'noopener');
+      });
+    }
+  });
+});
+
+/*==================== scroll reveal ============*/
+if (typeof ScrollReveal !== 'undefined') {
   ScrollReveal({
     reset: true,
     distance: '80px',
@@ -164,14 +179,10 @@ function initScrollReveal() {
   ScrollReveal().reveal('.contact-info, .contact-map, .footer', { origin: 'bottom' });
 }
 
-/* ==================== TYPED JS ==================== */
-function initTyped() {
-  if (typeof Typed === 'undefined') return;
-  const el = document.querySelector('.multiple-text');
-  if (!el) return;
-
+/*==================== typed js ============*/
+if (typeof Typed !== 'undefined' && document.querySelector('.multiple-text')) {
   new Typed('.multiple-text', {
-    strings: ['Data Analyst', 'Data Science Candidate', 'BI & Reporting', 'Python Developer'],
+    strings: ['Data Analyst', 'Data Science (MS)', 'BI & Reporting', 'Python / SQL'],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
@@ -179,116 +190,97 @@ function initTyped() {
   });
 }
 
-/* ==================== NOTIFICATION STYLES (ONCE) ==================== */
-function injectNotificationCSS() {
-  if (document.getElementById('notification-styles')) return;
+/*==================== form handling (MAILTO - Option A) ============*/
+const contactForm = document.querySelector('.contact form');
 
-  const style = document.createElement('style');
-  style.id = 'notification-styles';
-  style.innerHTML = `
-    .success-message, .error-message {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      padding: 14px 18px;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1.5rem;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      animation: slideIn 0.4s forwards;
-      opacity: 1;
-      transition: opacity 0.4s;
-    }
-    .success-message { background: linear-gradient(145deg, #00b7c7, #008394); }
-    .error-message { background: linear-gradient(145deg, #ff4d4d, #cc0000); }
-    @keyframes slideIn {
-      from { transform: translateX(80px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-    .error {
-      border: 1px solid #ff4d4d !important;
-      box-shadow: 0 0 6px rgba(255, 77, 77, 0.55) !important;
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-/* ==================== CONTACT FORM (MAILTO SAFARI-SAFE) ==================== */
-/* REQUIREMENT: <form id="contactForm"> ... */
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Grab values safely (works with your placeholders)
-    const name = form.querySelector('input[placeholder="Full Name"]')?.value.trim() || '';
-    const email = form.querySelector('input[placeholder="Email Address"]')?.value.trim() || '';
-    const phone = form.querySelector('input[placeholder="Phone Number"]')?.value.trim() || '';
-    const subject = form.querySelector('input[placeholder="Subject"]')?.value.trim() || '';
-    const message = form.querySelector('textarea')?.value.trim() || '';
-
-    // Basic validation
+if (contactForm) {
+  contactForm.addEventListener('submit', function (e) {
+    const formElements = this.elements;
     let isValid = true;
-    const requiredFields = form.querySelectorAll('[required]');
-    requiredFields.forEach(field => {
-      if (!field.value.trim()) {
+
+    for (let i = 0; i < formElements.length; i++) {
+      const el = formElements[i];
+      if (el.required && !el.value.trim()) {
         isValid = false;
-        field.classList.add('error');
-      } else {
-        field.classList.remove('error');
+        el.classList.add('error', 'shake');
+        setTimeout(() => el.classList.remove('shake'), 500);
+      } else if (el.required) {
+        el.classList.remove('error');
       }
-    });
+    }
 
-    injectNotificationCSS();
+    const parent = document.querySelector('.contact') || document.body;
 
-    const notify = document.createElement('div');
-    notify.className = isValid ? 'success-message' : 'error-message';
-    notify.innerHTML = isValid
-      ? '<i class="fas fa-check-circle"></i> Opening your email client...'
-      : '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
+    // ❗ If invalid, block submit (so mailto won't open)
+    if (!isValid) {
+      e.preventDefault();
 
-    document.body.appendChild(notify);
+      const notification = document.createElement('div');
+      notification.className = 'error-message';
+      notification.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
+      parent.appendChild(notification);
+
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 500);
+      }, 3500);
+
+      return;
+    }
+
+    // ✅ Valid: allow submit so mailto opens
+    const notification = document.createElement('div');
+    notification.className = 'success-message';
+    notification.innerHTML = '<i class="fas fa-check-circle"></i> Opening your email client...';
+    parent.appendChild(notification);
 
     setTimeout(() => {
-      notify.style.opacity = '0';
-      setTimeout(() => notify.remove(), 400);
-    }, 3500);
-
-    if (!isValid) return;
-
-    const body = `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-
-Message:
-${message}
-`.trim();
-
-    const mailto = `mailto:sagarshah2745@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    // Safari-safe
-    window.location.href = mailto;
-
-    form.reset();
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 500);
+    }, 2000);
   });
 }
 
-/* ==================== DOM READY INIT ==================== */
+/*==================== add CSS for notifications (only once) ============*/
 document.addEventListener('DOMContentLoaded', () => {
-  // Restore saved theme
-  applyTheme(localStorage.getItem('theme') || 'dark');
-
-  initTabs();
-  initPortfolioFilter();
-  initPortfolioCardClick();
-  initScrollReveal();
-  initTyped();
-  initContactForm();
+  if (!document.getElementById('notification-styles')) {
+    const style = document.createElement('style');
+    style.id = 'notification-styles';
+    style.innerHTML = `
+      .success-message, .error-message {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 1.6rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+        animation: slideIn 0.5s forwards;
+        opacity: 1;
+        transition: opacity 0.5s;
+      }
+      .success-message { background: linear-gradient(145deg, #00b7c7, #008394); }
+      .error-message { background: linear-gradient(145deg, #ff4d4d, #cc0000); }
+      @keyframes slideIn {
+        from { transform: translateX(100px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      .shake { animation: shake 0.5s; }
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+      .error {
+        border: 1px solid #ff4d4d !important;
+        box-shadow: 0 0 6px rgba(255, 77, 77, 0.55) !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 });
