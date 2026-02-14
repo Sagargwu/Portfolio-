@@ -302,13 +302,15 @@ span {
     transform: translateY(-0.5rem);
 }
 
-/* About Section Styles */
+/* ==================== About Section ==================== */
+
 .about {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4rem;
+    gap: 6rem; /* increased spacing */
     background: var(--second-bg-color);
+    padding: 8rem 9% 6rem;
 }
 
 .about-img {
@@ -316,17 +318,38 @@ span {
     height: 28vw;
     max-width: 350px;
     max-height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 3rem var(--shadow-color);
 }
 
 .heading {
     text-align: center;
-    font-size: 4.5rem;
-    margin-bottom: 3rem;
+    font-size: 4.2rem;
+    font-weight: 700;
+    margin-bottom: 4rem; /* more breathing space */
 }
 
 .about-content {
     flex: 1;
+    max-width: 650px; /* prevents text stretching too wide */
 }
+
+.about-content h3 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    letter-spacing: 0.4px;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+}
+
 
 /* Push Read More button lower */
 .about-content .btn {
