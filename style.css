@@ -1055,12 +1055,85 @@ span {
         margin-bottom: 2rem;
     }
 }
-.portfolio-box {
-  color: #fff;
-  text-decoration: none;
-}
 
-.portfolio-box h4,
-.portfolio-box p {
-  color: #fff;
-}
+/* ==================== Experience Timeline ==================== */
+.timeline {
+    position: relative;
+    margin-top: 2rem;
+    padding-left: 2.5rem;
+  }
+  
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(0, 183, 199, 0.45); /* matches your teal theme */
+  }
+  
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+  
+  .timeline-dot {
+    position: absolute;
+    left: 2px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #00b7c7;
+    box-shadow: 0 0 0 5px rgba(0, 183, 199, 0.15);
+  }
+  
+  .timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1.5rem 1.6rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  .timeline-content h4 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+  
+  .timeline-meta {
+    font-size: 1.4rem;
+    opacity: 0.85;
+    margin: 0.2rem 0;
+  }
+  
+  .timeline-content ul {
+    margin-top: 1rem;
+    padding-left: 1.8rem;
+  }
+  
+  .timeline-content ul li {
+    margin: 0.6rem 0;
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .timeline-tags {
+    margin-top: 1.2rem;
+    font-size: 1.35rem;
+    opacity: 0.9;
+    color: #cdeff3;
+  }
+  
+  /* Mobile spacing */
+  @media (max-width: 768px) {
+    .timeline {
+      padding-left: 2rem;
+    }
+    .timeline-content h4 {
+      font-size: 1.75rem;
+    }
+  }
+  
