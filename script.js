@@ -80,26 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
   if (firstTab) firstTab.click();
 
   /* Init portfolio filter - click All by default */
-  const allBtn = document.querySelector('.filter-btn[data-filter="all"]') || document.querySelector('.filter-btn');
+  const allBtn =
+    document.querySelector('.filter-btn[data-filter="all"]') ||
+    document.querySelector('.filter-btn');
   if (allBtn) allBtn.click();
 
-  /* prevent purple/blue link styling in portfolio (safe override) */
+  /* OPTIONAL: prevent any weird default link color in portfolio overlay */
   if (!document.getElementById('portfolio-link-style-fix')) {
     const style = document.createElement('style');
     style.id = 'portfolio-link-style-fix';
     style.innerHTML = `
-      .portfolio-box,
-      .portfolio-box:visited,
-      .portfolio-box:hover,
-      .portfolio-box:active {
-        color: #fff;
-        text-decoration: none;
-      }
-      .portfolio-box h4,
-      .portfolio-box p {
-        color: #fff;
-        text-decoration: none;
-      }
+      .portfolio-layer h4,
+      .portfolio-layer p { color: #fff !important; }
+      .portfolio-layer a { text-decoration: none !important; }
     `;
     document.head.appendChild(style);
   }
@@ -124,7 +117,7 @@ tabBtns.forEach(btn => {
 
 /*==================== portfolio filter (All / Web / Data) ============*/
 const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-box'); // <a> elements too
+const portfolioItems = document.querySelectorAll('.portfolio-box');
 
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
@@ -153,6 +146,23 @@ filterBtns.forEach(btn => {
   });
 });
 
+/*==================== make entire project card clickable ============*/
+document.addEventListener('DOMContentLoaded', () => {
+  const boxes = document.querySelectorAll('.portfolio-box');
+
+  boxes.forEach(box => {
+    const link = box.dataset.link;
+    if (link && link !== '#') {
+      box.style.cursor = 'pointer';
+
+      box.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+        window.open(link, '_blank', 'noopener');
+      });
+    }
+  });
+});
+
 /*==================== scroll reveal ============*/
 if (typeof ScrollReveal !== 'undefined') {
   ScrollReveal({
@@ -172,7 +182,7 @@ if (typeof ScrollReveal !== 'undefined') {
 /*==================== typed js ============*/
 if (typeof Typed !== 'undefined' && document.querySelector('.multiple-text')) {
   new Typed('.multiple-text', {
-    strings: ['Data Science Engineer', 'Information Technology Engineer', 'Data Analyst', 'Python Developer'],
+    strings: ['Data Analyst', 'Data Science (MS)', 'BI & Reporting', 'Python / SQL'],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
@@ -180,42 +190,54 @@ if (typeof Typed !== 'undefined' && document.querySelector('.multiple-text')) {
   });
 }
 
-/*==================== form handling ============*/
+/*==================== form handling (MAILTO - Option A) ============*/
 const contactForm = document.querySelector('.contact form');
 
 if (contactForm) {
   contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
     const formElements = this.elements;
     let isValid = true;
 
     for (let i = 0; i < formElements.length; i++) {
-      if (formElements[i].required && !formElements[i].value.trim()) {
+      const el = formElements[i];
+      if (el.required && !el.value.trim()) {
         isValid = false;
-        formElements[i].classList.add('error', 'shake');
-        setTimeout(() => formElements[i].classList.remove('shake'), 500);
-      } else if (formElements[i].required) {
-        formElements[i].classList.remove('error');
+        el.classList.add('error', 'shake');
+        setTimeout(() => el.classList.remove('shake'), 500);
+      } else if (el.required) {
+        el.classList.remove('error');
       }
     }
 
     const parent = document.querySelector('.contact') || document.body;
 
-    const notification = document.createElement('div');
-    notification.className = isValid ? 'success-message' : 'error-message';
-    notification.innerHTML = isValid
-      ? '<i class="fas fa-check-circle"></i> Thank you for your message! I will get back to you soon.'
-      : '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
+    // ❗ If invalid, block submit (so mailto won't open)
+    if (!isValid) {
+      e.preventDefault();
 
+      const notification = document.createElement('div');
+      notification.className = 'error-message';
+      notification.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please fill all required fields.';
+      parent.appendChild(notification);
+
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => notification.remove(), 500);
+      }, 3500);
+
+      return;
+    }
+
+    // ✅ Valid: allow submit so mailto opens
+    const notification = document.createElement('div');
+    notification.className = 'success-message';
+    notification.innerHTML = '<i class="fas fa-check-circle"></i> Opening your email client...';
     parent.appendChild(notification);
 
     setTimeout(() => {
       notification.style.opacity = '0';
       setTimeout(() => notification.remove(), 500);
-    }, 5000);
-
-    if (isValid) this.reset();
+    }, 2000);
   });
 }
 
@@ -242,12 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 1;
         transition: opacity 0.5s;
       }
-      .success-message {
-        background: linear-gradient(145deg, #00b7c7, #008394);
-      }
-      .error-message {
-        background: linear-gradient(145deg, #ff4d4d, #cc0000);
-      }
+      .success-message { background: linear-gradient(145deg, #00b7c7, #008394); }
+      .error-message { background: linear-gradient(145deg, #ff4d4d, #cc0000); }
       @keyframes slideIn {
         from { transform: translateX(100px); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
