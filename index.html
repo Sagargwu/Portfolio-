@@ -1,256 +1,258 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sagar Shah | Data Science Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sagar Shah | Data Science Portfolio</title>
 
-    <!-- Box icons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    
-    <!-- Font Awesome for additional icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Box icons -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <!-- Header design -->
-    <header class="header">
-        <a href="#" class="logo">Portfolio<span>.</span></a>
+  <!-- Header design -->
+  <header class="header">
+    <a href="#" class="logo">Portfolio<span>.</span></a>
+    
+    <i class="bx bx-menu" id="menu-icon"></i>
 
-        <i class='bx bx-menu' id="menu-icon"></i>
+    <nav class="navbar">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+      <div class="theme-toggle">
+        <i class="bx bx-moon" id="theme-icon"></i>
+      </div>
+    </nav>
+  </header>
 
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-            <div class="theme-toggle">
-                <i class='bx bx-moon' id="theme-icon"></i>
-            </div>
-        </nav>
-    </header>
+  <!-- Home section design -->
+  <section class="home" id="home">
+    <div class="home-content">
+      <h3>Hello, I'm</h3>
+      <h1>Sagar Sanjay Shah</h1>
+      <h3>A passionate <span class="multiple-text"></span></h3>
+      <p>I transform complex data into meaningful insights, driving innovative solutions and business growth.</p>
 
-    <!-- Home section design -->
-    <section class="home" id="home">
-        <div class="home-content">
-            <h3>Hello, I'm</h3>
-            <h1>Sagar Sanjay Shah</h1>
-            <h3>A passionate <span class="multiple-text"></span></h3>
-            <p>I transform complex data into meaningful insights, driving innovative solutions and business growth.</p>
-            
-            <div class="social-media">
-                <a href="https://www.linkedin.com/in/sagarshah2745/" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/Sagargwu" target="_blank"><i class='bx bxl-github'></i></a>
-                <a href="https://www.instagram.com/sagar_shah45/?next=%2F" target="_blank"><i class='bx bxl-instagram-alt'></i></a>
-                <a href="mailto:sagarshah2745@gmail.com"><i class='bx bxs-envelope'></i></a>
-            </div>
-            
-            <div class="cta-buttons">
-                <a href="/Users/sagarshah/Downloads/Shah_Sagar_Sanjay_Resume.pdf" class="btn primary-btn" download>Download CV</a>
-                <a href="#contact" class="btn secondary-btn">Let's Talk</a>
-            </div>
+      <div class="social-media">
+        <a href="https://www.linkedin.com/in/sagarshah2745/" target="_blank" rel="noopener"><i class="bx bxl-linkedin"></i></a>
+        <a href="https://github.com/Sagargwu" target="_blank" rel="noopener"><i class="bx bxl-github"></i></a>
+        <a href="https://www.instagram.com/sagar_shah45/?next=%2F" target="_blank" rel="noopener"><i class="bx bxl-instagram-alt"></i></a>
+        <a href="mailto:sagarshah2745@gmail.com"><i class="bx bxs-envelope"></i></a>
+      </div>
+
+      <div class="cta-buttons">
+        <!-- IMPORTANT: put the PDF in the same folder as index.html OR update this path -->
+        <a href="Shah_Sagar_Sanjay_Resume.pdf" class="btn primary-btn" download>Download CV</a>
+        <a href="#contact" class="btn secondary-btn">Let's Talk</a>
+      </div>
+    </div>
+
+    <div class="home-img">
+      <img src="Sagar_Shah.png" alt="Profile Image" />
+    </div>
+  </section>
+
+  <!-- About section design -->
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="Sagar_Shah.png" alt="Profile Image" />
+    </div>
+
+    <div class="about-content">
+      <h2 class="heading">About <span>Me</span></h2>
+      <h3>Data Science Engineer & Innovation Enthusiast</h3>
+
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="skills">My Expertise</button>
+          <button class="tab-btn" data-tab="experience">Experience</button>
+          <button class="tab-btn" data-tab="education">Education</button>
         </div>
 
-        <div class="home-img">
-            <img src="Sagar_Shah.png" alt="Profile Image">
-        </div>
-    </section>
+        <!-- SKILLS TAB -->
+        <div class="tab-content active" id="skills">
+          <p>
+            I’m a Data Analyst and MS Data Science candidate at George Washington University (GPA 3.78) focused on BI reporting,
+            statistical modeling, and decision intelligence. I build scalable dashboards and analytical solutions that convert
+            complex datasets into measurable business impact, including a KPI-driven dashboard analyzing 8,500+ SKUs and $1.20M in sales.
+            I also conduct advanced quantitative research on LLM stability using network and non-linear analysis, combining business
+            analytics with deep technical modeling.
+          </p>
 
-    <!-- About section design -->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="Sagar_Shah.png" alt="Profile Image">
-        </div>
-        
-        <div class="about-content">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3>Data Science Engineer & Innovation Enthusiast</h3>
-            
-            <div class="tab-container">
-                <div class="tab-buttons">
-                    <button class="tab-btn active" data-tab="skills">My Expertise</button>
-                    <button class="tab-btn" data-tab="experience">Experience</button>
-                    <button class="tab-btn" data-tab="education">Education</button>
-                </div>
-                
-                <div class="tab-content active" id="skills">
-                    <p>
-                        I’m a Data Analyst and MS Data Science candidate at George Washington University (GPA 3.78) focused on BI reporting, statistical modeling, and decision intelligence.  
-                        I build scalable dashboards and analytical solutions that convert complex datasets into measurable business impact, including a KPI-driven dashboard analyzing 8,500+ SKUs and $1.20M in sales.  
-                        I also conduct advanced quantitative research on LLM stability using network and non-linear analysis, combining business analytics with deep technical modeling.
-                      </p>
-                                                        
-                      <div class="skills-list">
-
-                        <div class="skill-item">
-                          <span>Python (Pandas, NumPy)</span>
-                          <div class="skill-progress">
-                            <div class="skill-bar" style="width: 90%;"></div>
-                          </div>
-                        </div>
-                      
-                        <div class="skill-item">
-                          <span>SQL (PostgreSQL / MySQL)</span>
-                          <div class="skill-progress">
-                            <div class="skill-bar" style="width: 85%;"></div>
-                          </div>
-                        </div>
-                      
-                        <div class="skill-item">
-                          <span>BI & Visualization (Tableau / Power BI)</span>
-                          <div class="skill-progress">
-                            <div class="skill-bar" style="width: 80%;"></div>
-                          </div>
-                        </div>
-                      
-                        <div class="skill-item">
-                          <span>Excel (Dashboards, Pivot Tables, Power Query)</span>
-                          <div class="skill-progress">
-                            <div class="skill-bar" style="width: 92%;"></div>
-                          </div>
-                        </div>
-                      
-                      </div>
-                                           
-                
-                <div class="tab-content" id="experience">
-                    <div class="timeline">
-                  
-                      <!-- 2025 - Present -->
-                      <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                          <h4>Dining Services Associate – Reporting Analyst</h4>
-                          <p class="timeline-meta">The George Washington University · Part-time</p>
-                          <p class="timeline-meta">Jul 2025 – Present · Washington, DC (On-site)</p>
-                          <ul>
-                            <li>Developed and maintained dining inventory management systems to track usage trends and improve supply forecasting.</li>
-                            <li>Analyzed dining operations and inventory stock data to reduce costs, forecast demand, and optimize processes.</li>
-                            <li>Applied descriptive statistics, trend analysis, and forecasting models to convert transaction data into actionable strategies.</li>
-                            <li>Supported continuous improvement by monitoring inventory turnover, stock-out frequency, and shrinkage metrics.</li>
-                            <li>Ensured reporting accuracy and compliance through data validation, issue resolution, and structured data processes.</li>
-                          </ul>
-                          <div class="timeline-tags">Excel · Reporting · Forecasting · Operations Analytics</div>
-                        </div>
-                      </div>
-                  
-                      <!-- 2024 -->
-                      <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                          <h4>Data Analyst Intern</h4>
-                          <p class="timeline-meta">EXIN Consultancy Limited</p>
-                          <p class="timeline-meta">Jan 2024 – Aug 2024 · Mumbai, India</p>
-                          <ul>
-                            <li>Cleaned, transformed, and standardized datasets to enable reliable analysis and reporting.</li>
-                            <li>Built Excel-based dashboards and reports to summarize trends and support business decisions.</li>
-                            <li>Performed data validation and quality checks to improve accuracy of insights.</li>
-                            <li>Worked with stakeholders to gather requirements and deliver analytics outputs.</li>
-                          </ul>
-                          <div class="timeline-tags">Excel · Dashboards · Data Cleaning · Reporting</div>
-                        </div>
-                      </div>
-                  
-                      <!-- 2023 - 2024 -->
-                      <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                          <h4>Teaching Assistant</h4>
-                          <p class="timeline-meta">St. Francis Institute Of Technology · Part-time</p>
-                          <p class="timeline-meta">Jul 2023 – May 2024 · Mumbai, India (On-site)</p>
-                          <ul>
-                            <li>Supported Cloud Computing coursework through tutorials, lab sessions, and mentoring on AWS and GCP projects.</li>
-                            <li>Created, administered, and graded quizzes, midterms, and final exams to support theory + practical learning.</li>
-                            <li>Provided academic support in virtualization, serverless computing, and cloud security.</li>
-                          </ul>
-                          <div class="timeline-tags">AWS · GCP · Cloud Computing · Mentoring</div>
-                        </div>
-                      </div>
-                  
-                    </div>
-                  </div>                  
-                
-                <div class="tab-content" id="education">
-                    <div class="education-item">
-                        <i class='bx bxs-graduation'></i>
-                        <div>
-                            <h4>Masters in Data Science</h4>
-                            <p>George Washington University, (2024-2026)</p>
-                            <p class="education-cgpa">CGPA: 3.79/4.0</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <i class='bx bxs-graduation'></i>
-                        <div>
-                            <h4>B.Tech in Information Technology</h4>
-                            <p>University of Mumbai, Maharashtra, India (2020-2024)</p>
-                            <p class="education-cgpa">CGPA: 3.3/4.0</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <a href="#" class="btn primary-btn">Read More</a>
-        </div>
-    </section>
-
-    <!-- Services section design -->
-    <section class="services" id="services">
-        <h2 class="heading">My <span>Skills</span></h2>
-
-        <div class="services-container">
-            <div class="services-box">
-                <i class='bx bx-code-alt'></i>
-                <h3>Business Intelligence & Analytics</h3>
-                <p>
-                I design KPI-driven dashboards and reporting systems using Excel, SQL, Tableau, and Power BI. 
-                My focus is on transforming raw datasets into structured insights that support executive decision-making, 
-                performance tracking, and operational optimization.
-                </p>                
-                <a href="#" class="btn">Learn More</a>
+          <div class="skills-list">
+            <div class="skill-item">
+              <span>Python (Pandas, NumPy)</span>
+              <div class="skill-progress">
+                <div class="skill-bar" style="width: 90%;"></div>
+              </div>
             </div>
 
-            <div class="services-box">
-                <i class='bx bxs-data'></i>
-                <h3>Applied Machine Learning & Statistical Modeling</h3>
-                <p>
-                I apply statistical analysis, regression modeling, and machine learning techniques using Python (Pandas, NumPy, Scikit-learn) 
-                to uncover patterns, forecast trends, and solve complex analytical problems, including large-scale LLM stability research.
-                </p>                
-                <a href="#" class="btn">Learn More</a>
+            <div class="skill-item">
+              <span>SQL (PostgreSQL / MySQL)</span>
+              <div class="skill-progress">
+                <div class="skill-bar" style="width: 85%;"></div>
+              </div>
             </div>
 
-            <div class="services-box">
-                <i class='bx bx-world'></i>
-                <h3>Data Engineering & Workflow Automation</h3>
-                <p>
-                I build structured data pipelines, automate ETL workflows, and perform data validation to ensure accuracy, 
-                scalability, and reliability across reporting and analytics systems using SQL and Python.
-                </p>                
-                <a href="#" class="btn">Learn More</a>
+            <div class="skill-item">
+              <span>BI & Visualization (Tableau / Power BI)</span>
+              <div class="skill-progress">
+                <div class="skill-bar" style="width: 80%;"></div>
+              </div>
             </div>
+
+            <div class="skill-item">
+              <span>Excel (Dashboards, Pivot Tables, Power Query)</span>
+              <div class="skill-progress">
+                <div class="skill-bar" style="width: 92%;"></div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+        <!-- FIX: CLOSED SKILLS TAB PROPERLY -->
 
-<!-- Portfolio section design -->
-<section class="portfolio" id="portfolio">
+        <!-- EXPERIENCE TAB -->
+        <div class="tab-content" id="experience">
+          <div class="timeline">
+            <!-- 2025 - Present -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h4>Dining Services Associate – Reporting Analyst</h4>
+                <p class="timeline-meta">The George Washington University · Part-time</p>
+                <p class="timeline-meta">Jul 2025 – Present · Washington, DC (On-site)</p>
+                <ul>
+                  <li>Developed and maintained dining inventory management systems to track usage trends and improve supply forecasting.</li>
+                  <li>Analyzed dining operations and inventory stock data to reduce costs, forecast demand, and optimize processes.</li>
+                  <li>Applied descriptive statistics, trend analysis, and forecasting models to convert transaction data into actionable strategies.</li>
+                  <li>Supported continuous improvement by monitoring inventory turnover, stock-out frequency, and shrinkage metrics.</li>
+                  <li>Ensured reporting accuracy and compliance through data validation, issue resolution, and structured data processes.</li>
+                </ul>
+                <div class="timeline-tags">Excel · Reporting · Forecasting · Operations Analytics</div>
+              </div>
+            </div>
+
+            <!-- 2024 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h4>Data Analyst Intern</h4>
+                <p class="timeline-meta">EXIN Consultancy Limited</p>
+                <p class="timeline-meta">Jan 2024 – Aug 2024 · Mumbai, India</p>
+                <ul>
+                  <li>Cleaned, transformed, and standardized datasets to enable reliable analysis and reporting.</li>
+                  <li>Built Excel-based dashboards and reports to summarize trends and support business decisions.</li>
+                  <li>Performed data validation and quality checks to improve accuracy of insights.</li>
+                  <li>Worked with stakeholders to gather requirements and deliver analytics outputs.</li>
+                </ul>
+                <div class="timeline-tags">Excel · Dashboards · Data Cleaning · Reporting</div>
+              </div>
+            </div>
+
+            <!-- 2023 - 2024 -->
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h4>Teaching Assistant</h4>
+                <p class="timeline-meta">St. Francis Institute Of Technology · Part-time</p>
+                <p class="timeline-meta">Jul 2023 – May 2024 · Mumbai, India (On-site)</p>
+                <ul>
+                  <li>Supported Cloud Computing coursework through tutorials, lab sessions, and mentoring on AWS and GCP projects.</li>
+                  <li>Created, administered, and graded quizzes, midterms, and final exams to support theory + practical learning.</li>
+                  <li>Provided academic support in virtualization, serverless computing, and cloud security.</li>
+                </ul>
+                <div class="timeline-tags">AWS · GCP · Cloud Computing · Mentoring</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION TAB -->
+        <div class="tab-content" id="education">
+          <div class="education-item">
+            <i class="bx bxs-graduation"></i>
+            <div>
+              <h4>Masters in Data Science</h4>
+              <p>George Washington University (2024–2026)</p>
+              <p class="education-cgpa">CGPA: 3.79/4.0</p>
+            </div>
+          </div>
+
+          <div class="education-item">
+            <i class="bx bxs-graduation"></i>
+            <div>
+              <h4>B.Tech in Information Technology</h4>
+              <p>University of Mumbai, Maharashtra, India (2020–2024)</p>
+              <p class="education-cgpa">CGPA: 3.3/4.0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- You can change this to #portfolio if you want it to scroll -->
+      <a href="#portfolio" class="btn primary-btn">Read More</a>
+    </div>
+  </section>
+
+  <!-- Services section design -->
+  <section class="services" id="services">
+    <h2 class="heading">My <span>Skills</span></h2>
+
+    <div class="services-container">
+      <div class="services-box">
+        <i class="bx bx-code-alt"></i>
+        <h3>Business Intelligence & Analytics</h3>
+        <p>
+          I design KPI-driven dashboards and reporting systems using Excel, SQL, Tableau, and Power BI.
+          My focus is on transforming raw datasets into structured insights that support executive decision-making,
+          performance tracking, and operational optimization.
+        </p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+
+      <div class="services-box">
+        <i class="bx bxs-data"></i>
+        <h3>Applied Machine Learning & Statistical Modeling</h3>
+        <p>
+          I apply statistical analysis, regression modeling, and machine learning techniques using Python (Pandas, NumPy, Scikit-learn)
+          to uncover patterns, forecast trends, and solve complex analytical problems, including large-scale LLM stability research.
+        </p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+
+      <div class="services-box">
+        <i class="bx bx-world"></i>
+        <h3>Data Engineering & Workflow Automation</h3>
+        <p>
+          I build structured data pipelines, automate ETL workflows, and perform data validation to ensure accuracy,
+          scalability, and reliability across reporting and analytics systems using SQL and Python.
+        </p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio section design -->
+  <section class="portfolio" id="portfolio">
     <h2 class="heading">Latest <span>Projects</span></h2>
-  
+
     <div class="portfolio-filter">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="data">Data Science</button>
-        <button class="filter-btn" data-filter="web">Web Dev</button>
-    </div>      
-  
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="data">Data Science</button>
+      <button class="filter-btn" data-filter="web">Web Dev</button>
+    </div>
+
     <div class="portfolio-container">
-  
-      <!-- Project 1: LLM Chaos Fingerprints -->
       <a class="portfolio-box" data-category="data"
          href="https://github.com/Sagargwu/LLM-Chaos-Fingerprints"
          target="_blank" rel="noopener">
@@ -258,13 +260,10 @@
         <div class="portfolio-layer">
           <h4>LLM Chaos Fingerprints</h4>
           <p>Applied network metrics and dynamical systems analysis to study temperature-driven instability and hallucination behavior in large language models.</p>
-          <span class="portfolio-link">
-            <i class="bx bx-link-external"></i>
-          </span>
+          <span class="portfolio-link"><i class="bx bx-link-external"></i></span>
         </div>
       </a>
-  
-      <!-- Project 2: Blinkit Grocery Sales Analytics -->
+
       <a class="portfolio-box" data-category="data"
          href="https://github.com/Sagargwu/BlinkIT-Grocery-Sales-Analytics-Dashboard"
          target="_blank" rel="noopener">
@@ -272,13 +271,10 @@
         <div class="portfolio-layer">
           <h4>Blinkit Grocery Sales Analytics</h4>
           <p>Designed a KPI-driven Excel BI dashboard analyzing 8,500+ SKUs and $1.20M in sales, uncovering trends in outlet performance and product optimization.</p>
-          <span class="portfolio-link">
-            <i class="bx bx-link-external"></i>
-          </span>
+          <span class="portfolio-link"><i class="bx bx-link-external"></i></span>
         </div>
       </a>
-  
-      <!-- Project 3: Healthcare Management System -->
+
       <a class="portfolio-box" data-category="data"
          href="https://github.com/Sagargwu/Healthcare-Management-System-SQL-vs-MongoDB"
          target="_blank" rel="noopener">
@@ -286,126 +282,114 @@
         <div class="portfolio-layer">
           <h4>Healthcare Management System (SQL vs MongoDB)</h4>
           <p>Built a dual-database system with 100,000+ synthetic healthcare records; benchmarked 16+ queries to compare relational vs NoSQL performance and proposed a hybrid architecture.</p>
-          <span class="portfolio-link">
-            <i class="bx bx-link-external"></i>
-          </span>
+          <span class="portfolio-link"><i class="bx bx-link-external"></i></span>
         </div>
       </a>
 
-       <!-- 4️⃣ Heart Disease Risk Analysis -->
-       <a class="portfolio-box" data-category="data"
-          href="https://github.com/Sagargwu/Heart-Disease-Risk-Analysis"
-          target="_blank" rel="noopener">
-         <img alt="Heart Disease Risk Dashboard" src="Portfolio_design1.png" />
-         <div class="portfolio-layer">
-            <h4>Heart Disease Risk Analysis Dashboard</h4>
-            <p>Built an interactive Dash + Tableau dashboard using 400,000+ CDC records; implemented ETL, PCA (55% variance capture), and deployed on Google Cloud.</p>
-            <span class="portfolio-link">
-              <i class="bx bx-link-external"></i>
-            </span>
-         </div>
-       </a>
-        
-  
+      <a class="portfolio-box" data-category="data"
+         href="https://github.com/Sagargwu/Heart-Disease-Risk-Analysis"
+         target="_blank" rel="noopener">
+        <img alt="Heart Disease Risk Dashboard" src="Portfolio_design1.png" />
+        <div class="portfolio-layer">
+          <h4>Heart Disease Risk Analysis Dashboard</h4>
+          <p>Built an interactive Dash + Tableau dashboard using 400,000+ CDC records; implemented ETL, PCA (55% variance capture), and deployed on Google Cloud.</p>
+          <span class="portfolio-link"><i class="bx bx-link-external"></i></span>
+        </div>
+      </a>
     </div>
-</section>
+  </section>
 
-  
-<!-- Contact section design - Enhanced and Unified -->
-<section class="contact" id="contact">
+  <!-- Contact section design -->
+  <section class="contact" id="contact">
     <h2 class="heading">Drop <span>Me a Line!</span></h2>
-  
+
     <div class="contact-container">
-  
-      <!-- Mailto Form -->
-      <form id="contact-form"
-            action="sagarshah2745@gmail.com"
-            enctype="text/plain">
-  
+      <form id="contact-form" action="sagarshah2745@gmail.com" enctype="text/plain">
         <div class="input-box">
           <div class="input-field">
-            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="name" placeholder="Full Name" required />
             <i class="fas fa-user"></i>
           </div>
-  
+
           <div class="input-field">
-            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="email" name="email" placeholder="Email Address" required />
             <i class="fas fa-envelope"></i>
           </div>
         </div>
-  
+
         <div class="input-box">
           <div class="input-field">
-            <input type="tel" name="phone" placeholder="Phone Number">
+            <input type="tel" name="phone" placeholder="Phone Number" />
             <i class="fas fa-phone"></i>
           </div>
-  
+
           <div class="input-field">
-            <input type="text" name="subject" placeholder="Subject" required>
+            <input type="text" name="subject" placeholder="Subject" required />
             <i class="fas fa-file-alt"></i>
           </div>
         </div>
-  
+
         <div class="textarea-field">
           <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
           <i class="fas fa-message"></i>
         </div>
-  
+
         <button type="submit" class="btn primary-btn">
           Send Message <i class="fas fa-paper-plane"></i>
         </button>
-  
       </form>
-  
+
       <div class="contact-info">
         <div class="contact-card">
-          <i class='bx bx-envelope'></i>
+          <i class="bx bx-envelope"></i>
           <h3>Email</h3>
           <p>sagarshah2745@gmail.com</p>
         </div>
-  
+
         <div class="contact-card">
-          <i class='bx bx-phone'></i>
+          <i class="bx bx-phone"></i>
           <h3>Phone</h3>
           <p>+1 (703) 928-9293</p>
         </div>
-  
+
         <div class="contact-card">
-          <i class='bx bx-map'></i>
+          <i class="bx bx-map"></i>
           <h3>Location</h3>
           <p>Arlington VA, USA</p>
         </div>
       </div>
-  
+
       <div class="contact-map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d94310.51423036467!2d-77.076221!3d38.8619001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b6d84d41e037%3A0xf17c7eea1b279341!2sArlington%2C%20VA%2022202!5e0!3m2!1sen!2sus!4v1646182270085!5m2!1sen!2sus"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+          width="100%"
+          height="100%"
+          style="border: 0;"
+          allowfullscreen=""
+          loading="lazy">
         </iframe>
       </div>
-  
     </div>
   </section>
-  
 
-    <!-- Footer design -->
-    <footer class="footer">
-        <div class="footer-text">
-            <p>Copyright &copy; 2025 Sagar Sanjay Shah | All rights reserved.</p>
-        </div>
+  <!-- Footer design -->
+  <footer class="footer">
+    <div class="footer-text">
+      <p>Copyright &copy; 2025 Sagar Sanjay Shah | All rights reserved.</p>
+    </div>
 
-        <div class="footer-iconTop">
-            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-        </div>
-    </footer>
+    <div class="footer-iconTop">
+      <a href="#home"><i class="bx bx-up-arrow-alt"></i></a>
+    </div>
+  </footer>
 
-    <!-- Scroll reveal -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- Scroll reveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
 
-    <!-- Typed JS -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Typed JS -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
 </body>
 </html>
